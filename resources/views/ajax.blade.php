@@ -1,0 +1,16 @@
+
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<meta name="csrf-token" content="{{csrf_token()}}" />
+<meta name="assam" content="foto" />
+<script>
+    $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
+    $(document).ready(function(){
+        if($('meta[name="assam"]').attr('content') === 'foto'){
+            $.post('/fotoProductsScript/', {
+                payload: 'hello'
+            }, function(data) {
+                $('body').text(data);
+            });
+        }
+    })
+</script>
