@@ -1,0 +1,70 @@
+<?php $__env->startSection('contentHome'); ?>
+    <!-- BEGIN BODY -->
+    <body class="fixed-top">
+    <!-- BEGIN HEADER -->
+    <?php echo $__env->make('header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <!-- END HEADER -->
+    <!-- BEGIN CONTAINER -->
+    <div class="page-container row-fluid">
+        <!-- BEGIN SIDEBAR -->
+        <?php echo $__env->make('menu', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <!-- END SIDEBAR -->
+        <!-- BEGIN PAGE -->
+        <div class="page-content">
+            <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+            <div id="portlet-config" class="modal hide">
+                <div class="modal-header">
+                    <button data-dismiss="modal" class="close" type="button"></button>
+                    <h3>Widget Settings</h3>
+                </div>
+                <div class="modal-body">
+                    <p>Here will be a configuration form</p>
+                </div>
+            </div>
+            <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+            <!-- BEGIN PAGE CONTAINER-->
+            <div class="container-fluid">
+                <!-- BEGIN PAGE HEADER-->
+                <div class="row-fluid">
+                    <div class="span12">
+                    </div>
+                </div>
+                <!-- END PAGE HEADER-->
+                <div id="dashboard">
+                    <!-- BEGIN DASHBOARD STATS -->
+                    <div class="row-fluid">
+                        <?php foreach($client as $clin): ?>
+                            <div class="span3 responsive" data-tablet="span6" data-desktop="span3">
+                                <div class="dashboard-stat
+                                    <?php if($clin->status == '0'): ?>
+                                        green
+                                    <?php elseif($clin->status == '1'): ?>
+                                        yellow
+                                    <?php else: ?>
+                                        red
+                                    <?php endif; ?> ">
+                                    <div class="details">
+                                        <div class="desc">
+                                            <?php echo e($clin->name_clients); ?>
+
+                                        </div>
+                                    </div>
+                                    <a class="more" href="/static-<?php echo e($clin->indeficators); ?>">
+                                        Просмотреть статистику <i class="m-icon-swapright m-icon-white"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+            <!-- END PAGE CONTAINER-->
+        </div>
+        <!-- END PAGE -->
+    </div>
+    <!-- END CONTAINER -->
+
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('appHome', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

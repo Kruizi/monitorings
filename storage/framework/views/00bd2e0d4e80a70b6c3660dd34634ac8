@@ -1,0 +1,4 @@
+<pre>
+<?php echo e($teting); ?>
+
+</pre>
